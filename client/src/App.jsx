@@ -37,6 +37,10 @@ import { PatientDashboard } from './components/patient/PatientDashboard';
 import { PatientRequestCareView } from './components/patient/PatientRequestCareView';
 import { PatientAppointmentsView } from './components/patient/PatientAppointmentsView';
 import { DoctorDiscoveryView } from './components/patient/DoctorDiscoveryView';
+import { PatientRecordsView } from './components/patient/PatientRecordsView';
+import { PatientPrescriptionsView } from './components/patient/PatientPrescriptionsView';
+import { PatientDiagnosticsView } from './components/patient/PatientDiagnosticsView';
+import { PatientBillingView } from './components/patient/PatientBillingView';
 
 import './App.css';
 
@@ -96,13 +100,25 @@ function DoctorPortal({ activeModule, setActiveModule }) {
       case 'dashboard':
         return <DoctorDashboard doctorId={activeDoctorId} onNavigate={setActiveModule} openConsultation={openConsultation} />;
       case 'my-patients':
-        return <DoctorPatientsView doctorId={activeDoctorId} openConsultation={openConsultation} />;
+      case 'patients':
+      case 'doctor-patients':
+        return <DoctorPatientsView doctorId={activeDoctorId} onNavigate={setActiveModule} openConsultation={openConsultation} />;
       case 'consultation':
-        return <DoctorConsultationWorkspace doctorId={activeDoctorId} patientId={consultingPatientId} goBack={() => setActiveModule('my-patients')} />;
+      case 'doctor-consultation':
+        return (
+          <DoctorConsultationWorkspace
+            doctorId={activeDoctorId}
+            patientId={consultingPatientId}
+            onNavigate={setActiveModule}
+            goBack={() => setActiveModule('my-patients')}
+          />
+        );
       case 'prescriptions':
-        return <DoctorPrescriptionsView doctorId={activeDoctorId} />;
+      case 'doctor-prescriptions':
+        return <DoctorPrescriptionsView doctorId={activeDoctorId} onNavigate={setActiveModule} />;
       case 'profile':
-        return <DoctorProfileView doctorId={activeDoctorId} />;
+      case 'doctor-profile':
+        return <DoctorProfileView doctorId={activeDoctorId} onNavigate={setActiveModule} />;
       default:
         return <DoctorDashboard doctorId={activeDoctorId} onNavigate={setActiveModule} openConsultation={openConsultation} />;
     }
@@ -129,12 +145,29 @@ function PatientPortal({ activeModule, setActiveModule }) {
     switch (activeModule) {
       case 'dashboard':
         return <PatientDashboard patientId={activePatientId} onNavigate={setActiveModule} />;
-      case 'request-care':
-        return <PatientRequestCareView patientId={activePatientId} />;
+      case 'records':
+      case 'patient-records':
+      case 'medical-records':
+        return <PatientRecordsView patientId={activePatientId} onNavigate={setActiveModule} />;
+      case 'prescriptions':
+      case 'patient-prescriptions':
+        return <PatientPrescriptionsView patientId={activePatientId} onNavigate={setActiveModule} />;
+      case 'diagnostics':
+      case 'patient-diagnostics':
+      case 'lab-results':
+        return <PatientDiagnosticsView patientId={activePatientId} onNavigate={setActiveModule} />;
       case 'appointments':
-        return <PatientAppointmentsView patientId={activePatientId} />;
+      case 'patient-appointments':
+        return <PatientAppointmentsView patientId={activePatientId} onNavigate={setActiveModule} />;
+      case 'request-care':
+      case 'patient-request-care':
+        return <PatientRequestCareView patientId={activePatientId} onNavigate={setActiveModule} />;
+      case 'billing':
+      case 'patient-billing':
+        return <PatientBillingView patientId={activePatientId} onNavigate={setActiveModule} />;
       case 'doctors':
-        return <DoctorDiscoveryView />;
+      case 'discovery':
+        return <DoctorDiscoveryView onNavigate={setActiveModule} />;
       default:
         return <PatientDashboard patientId={activePatientId} onNavigate={setActiveModule} />;
     }

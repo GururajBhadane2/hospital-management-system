@@ -1,28 +1,81 @@
 import { createClient } from '@supabase/supabase-js';
 
-const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
-const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
+export const getActiveSupabaseUrl = () => {
+  return (typeof window !== 'undefined' && localStorage.getItem('apexcare_supabase_url')) ||
+    import.meta.env.VITE_SUPABASE_URL || '';
+};
+
+export const getActiveSupabaseAnonKey = () => {
+  return (typeof window !== 'undefined' && localStorage.getItem('apexcare_supabase_anon_key')) ||
+    import.meta.env.VITE_SUPABASE_ANON_KEY || '';
+};
 
 export const isSupabaseConfigured = () => {
+  const url = getActiveSupabaseUrl();
+  const key = getActiveSupabaseAnonKey();
   return Boolean(
-    supabaseUrl &&
-    supabaseAnonKey &&
-    supabaseUrl.startsWith('https://') &&
-    !supabaseUrl.includes('your-project-id') &&
-    !supabaseAnonKey.includes('...') &&
-    supabaseAnonKey.length > 20
+    url &&
+    key &&
+    url.startsWith('https://') &&
+    !url.includes('your-project-id') &&
+    !key.includes('...') &&
+    key.length > 20
   );
 };
 
-// Singleton client instance or null if not configured
-export const supabase = isSupabaseConfigured()
-  ? createClient(supabaseUrl, supabaseAnonKey, {
-      auth: {
-        persistSession: true,
-        autoRefreshToken: true
-      }
-    })
-  : null;
+let clientInstance = null;
+
+export const getSupabaseClient = () => {
+  if (!clientInstance && isSupabaseConfigured()) {
+    try {
+      clientInstance = createClient(getActiveSupabaseUrl(), getActiveSupabaseAnonKey(), {
+        auth: {
+          persistSession: true,
+          autoRefreshToken: true
+        }
+      });
+    } catch (e) {
+      console.warn('[Supabase] Failed to instantiate client:', e);
+      clientInstance = null;
+    }
+  }
+  return clientInstance;
+};
+
+export const saveSupabaseCredentials = (url, anonKey) => {
+  const cleanUrl = (url || '').trim();
+  const cleanKey = (anonKey || '').trim();
+  if (typeof window !== 'undefined') {
+    localStorage.setItem('apexcare_supabase_url', cleanUrl);
+    localStorage.setItem('apexcare_supabase_anon_key', cleanKey);
+  }
+  try {
+    clientInstance = createClient(cleanUrl, cleanKey, {
+      auth: { persistSession: true, autoRefreshToken: true }
+    });
+  } catch (e) {
+    console.error('[Supabase] Error creating client with provided credentials:', e);
+  }
+  return clientInstance;
+};
+
+export const clearSupabaseCredentials = () => {
+  if (typeof window !== 'undefined') {
+    localStorage.removeItem('apexcare_supabase_url');
+    localStorage.removeItem('apexcare_supabase_anon_key');
+  }
+  clientInstance = null;
+};
+
+// Singleton dynamic proxy client
+export const supabase = new Proxy({}, {
+  get: (target, prop) => {
+    const client = getSupabaseClient();
+    if (!client) return undefined;
+    const val = client[prop];
+    return typeof val === 'function' ? val.bind(client) : val;
+  }
+});
 
 // Table name mappings to state properties
 export const TABLE_MAP = {

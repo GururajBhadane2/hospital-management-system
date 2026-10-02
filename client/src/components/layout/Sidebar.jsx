@@ -59,9 +59,13 @@ const Sidebar = ({ activeModule, setActiveModule, role }) => {
   // Patient Navigation
   const patientNav = [
     { id: 'dashboard',    label: 'Patient Overview',         icon: LayoutDashboard },
-    { id: 'request-care', label: 'Request Consultation',     icon: ClipboardList, highlight: true },
-    { id: 'doctors',      label: 'Find Doctors & Depts',     icon: Search },
+    { id: 'records',      label: 'My Medical Records (EHR)', icon: FileText, highlight: true },
+    { id: 'prescriptions',label: 'My Prescriptions',         icon: Pill },
+    { id: 'diagnostics',  label: 'Lab & Diagnostics',        icon: FlaskConical },
     { id: 'appointments', label: 'My Appointments',          icon: CalendarCheck },
+    { id: 'request-care', label: 'Request Consultation',     icon: ClipboardList },
+    { id: 'billing',      label: 'Billing & Invoices',       icon: Receipt },
+    { id: 'doctors',      label: 'Find Doctors & Depts',     icon: Search },
   ];
 
   const activeRole = role || currentRole;

@@ -5,7 +5,7 @@ import { useHospitalData } from '../../context/DataContext';
 import { Badge } from '../common/Badge';
 import { EmptyState } from '../common/EmptyState';
 
-export const DoctorPatientsView = ({ onNavigate }) => {
+export const DoctorPatientsView = ({ onNavigate, openConsultation }) => {
   const { activeDoctorId } = useAuth();
   const { doctors, patients } = useHospitalData();
   const currentDoctor = doctors.find(d => d.id === activeDoctorId) || doctors[0];
@@ -25,7 +25,7 @@ export const DoctorPatientsView = ({ onNavigate }) => {
           </p>
         </div>
 
-        <button className="btn btn-primary" onClick={() => onNavigate && onNavigate('doctor-consultation')}>
+        <button className="btn btn-primary" onClick={() => onNavigate && onNavigate('consultation')}>
           <HeartPulse size={16} />
           Start Patient Consultation
         </button>
@@ -84,7 +84,10 @@ export const DoctorPatientsView = ({ onNavigate }) => {
                   <td style={{ textAlign: 'right' }}>
                     <button
                       className="btn btn-primary btn-sm"
-                      onClick={() => onNavigate && onNavigate('doctor-consultation')}
+                      onClick={() => {
+                        if (openConsultation) openConsultation(p.id);
+                        else if (onNavigate) onNavigate('consultation');
+                      }}
                     >
                       <HeartPulse size={13} />
                       Consultation

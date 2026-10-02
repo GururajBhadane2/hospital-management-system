@@ -15,8 +15,8 @@ import {
 import { useAuth } from '../../context/AuthContext';
 import { useHospitalData } from '../../context/DataContext';
 
-export const DoctorConsultationWorkspace = ({ onNavigate }) => {
-  const { activeDoctorId } = useAuth();
+export const DoctorConsultationWorkspace = ({ patientId, doctorId, onNavigate, goBack }) => {
+  const { activeDoctorId, setActivePatientId, loginAsPatient } = useAuth();
   const {
     doctors,
     patients,
@@ -24,16 +24,27 @@ export const DoctorConsultationWorkspace = ({ onNavigate }) => {
     issuePrescription,
     addLabTestOrder,
     addRadiologyOrder,
-    createPharmacyOrder
+    createPharmacyOrder,
+    updatePatient
   } = useHospitalData();
 
-  const currentDoctor = doctors.find(d => d.id === activeDoctorId) || doctors[0];
+  const docIdToUse = doctorId || activeDoctorId;
+  const currentDoctor = doctors.find(d => d.id === docIdToUse) || doctors[0];
 
-  // Patients available for consultation
-  const myPatients = patients.filter(p => p.assignedDoctor === currentDoctor?.name);
-  const patientList = myPatients.length > 0 ? myPatients : patients;
+  // Patients available for consultation (allow all patients or assigned patients)
+  const patientList = patients && patients.length > 0 ? patients : [];
 
-  const [selectedPatientId, setSelectedPatientId] = useState(patientList[0]?.id || '');
+  const [selectedPatientId, setSelectedPatientId] = useState(
+    patientId || (patientList.find(p => p.assignedDoctor === currentDoctor?.name)?.id) || patientList[0]?.id || ''
+  );
+
+  // Sync if patientId prop changes
+  React.useEffect(() => {
+    if (patientId) {
+      setSelectedPatientId(patientId);
+    }
+  }, [patientId]);
+
   const activePatient = patientList.find(p => p.id === selectedPatientId) || patientList[0];
 
   // Consultation Details State
@@ -151,11 +162,18 @@ export const DoctorConsultationWorkspace = ({ onNavigate }) => {
       });
     }
 
+    // 5. Update patient record and sync active patient ID for Patient Portal
+    if (updatePatient) {
+      updatePatient(activePatient.id, {
+        chronicConditions: diagnosis,
+        lastConsultationDate: new Date().toISOString().split('T')[0]
+      });
+    }
+    if (setActivePatientId) {
+      setActivePatientId(activePatient.id);
+    }
+
     setSubmittedSuccess(true);
-    setTimeout(() => {
-      setSubmittedSuccess(false);
-      if (onNavigate) onNavigate('doctor-dashboard');
-    }, 2500);
   };
 
   return (
@@ -172,11 +190,39 @@ export const DoctorConsultationWorkspace = ({ onNavigate }) => {
       </div>
 
       {submittedSuccess && (
-        <div style={{ padding: '16px', background: 'rgba(16, 185, 129, 0.15)', border: '1px solid rgba(16, 185, 129, 0.4)', borderRadius: 'var(--radius-md)', color: 'var(--success)', display: 'flex', alignItems: 'center', gap: '10px' }}>
-          <CheckCircle size={22} />
-          <div>
-            <strong style={{ display: 'block', fontSize: '0.95rem' }}>Clinical Consultation Completed Successfully!</strong>
-            <span style={{ fontSize: '0.825rem', color: 'var(--text-muted)' }}>EMR record generated, digital prescription issued to pharmacy, and patient notification dispatched.</span>
+        <div style={{ padding: '18px 20px', background: 'rgba(16, 185, 129, 0.15)', border: '1px solid rgba(16, 185, 129, 0.4)', borderRadius: 'var(--radius-md)', color: 'var(--success)', display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '14px' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+            <CheckCircle size={26} />
+            <div>
+              <strong style={{ display: 'block', fontSize: '1rem', color: '#10b981' }}>Clinical Consultation Submitted Successfully!</strong>
+              <span style={{ fontSize: '0.85rem', color: 'var(--text-main)' }}>
+                EMR record generated for <strong>{activePatient?.name} ({activePatient?.id})</strong>, prescription issued, and diagnostic orders sent.
+              </span>
+            </div>
+          </div>
+
+          <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+            <button
+              type="button"
+              className="btn btn-secondary btn-sm"
+              onClick={() => {
+                setSubmittedSuccess(false);
+                if (goBack) goBack();
+                else if (onNavigate) onNavigate('my-patients');
+              }}
+            >
+              Patient List
+            </button>
+            <button
+              type="button"
+              className="btn btn-primary btn-sm"
+              onClick={() => {
+                loginAsPatient(activePatient.id);
+              }}
+              style={{ background: 'linear-gradient(135deg, #6366f1, #0ea5e9)', border: 'none', fontWeight: 700 }}
+            >
+              Switch to Patient Portal ({activePatient?.name?.split(' ')[0]}) ➔
+            </button>
           </div>
         </div>
       )}

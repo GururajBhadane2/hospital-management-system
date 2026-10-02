@@ -83,7 +83,7 @@ export const DoctorDashboard = ({ onNavigate }) => {
 
         <button
           className="btn btn-primary"
-          onClick={() => onNavigate('doctor-consultation')}
+          onClick={() => onNavigate('consultation')}
           style={{ padding: '12px 20px' }}
         >
           <HeartPulse size={16} />
@@ -99,7 +99,7 @@ export const DoctorDashboard = ({ onNavigate }) => {
           subtitle={`${myPatients.filter(p => p.admissionStatus === 'Inpatient').length} Inpatients under care`}
           icon={Users}
           color="emerald"
-          onClick={() => onNavigate('doctor-patients')}
+          onClick={() => onNavigate('my-patients')}
         />
         <StatCard
           title="My Appointments"
@@ -107,7 +107,7 @@ export const DoctorDashboard = ({ onNavigate }) => {
           subtitle="Consultations on schedule"
           icon={CalendarCheck}
           color="primary"
-          onClick={() => onNavigate('doctor-appointments')}
+          onClick={() => onNavigate('appointments')}
         />
         <StatCard
           title="Triage Assignments"
@@ -115,7 +115,7 @@ export const DoctorDashboard = ({ onNavigate }) => {
           subtitle="Care requests routed by manager"
           icon={ClipboardList}
           color="amber"
-          onClick={() => onNavigate('doctor-appointments')}
+          onClick={() => onNavigate('my-patients')}
         />
         <StatCard
           title="Prescriptions Issued"
@@ -123,7 +123,7 @@ export const DoctorDashboard = ({ onNavigate }) => {
           subtitle="Digital medication orders"
           icon={Pill}
           color="indigo"
-          onClick={() => onNavigate('doctor-prescriptions')}
+          onClick={() => onNavigate('prescriptions')}
         />
       </div>
 
