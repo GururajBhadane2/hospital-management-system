@@ -1,0 +1,19 @@
+{
+  "name": "hospital-management-system",
+  "version": "1.0.0",
+  "description": "Comprehensive Full-Stack Hospital Management System",
+  "scripts": {
+    "client": "npm --prefix client run dev",
+    "server": "npm --prefix server run dev",
+    "install:all": "npm --prefix client install && npm --prefix server install"
+  },
+  "keywords": [
+    "hospital-management",
+    "healthcare",
+    "react",
+    "express",
+    "vite"
+  ],
+  "author": "Gururaj Bhadane",
+  "license": "MIT"
+}

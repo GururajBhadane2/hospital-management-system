@@ -1,0 +1,540 @@
+{
+  "hospital": {
+    "name": "ApexCare Medical Center",
+    "tagline": "Advanced Healthcare & Patient Excellence",
+    "emergencyPhone": "+1 (800) 555-0911",
+    "generalPhone": "+1 (555) 234-7000",
+    "email": "contact@apexcare-medical.org",
+    "address": "450 Health Sciences Blvd, Boston, MA 02115"
+  },
+  "patients": [
+    {
+      "id": "PAT-1001",
+      "name": "Eleanor Vance",
+      "age": 38,
+      "gender": "Female",
+      "bloodGroup": "O+",
+      "contact": "+1 (555) 234-5678",
+      "email": "eleanor.vance@example.com",
+      "address": "742 Evergreen Terrace, Boston, MA",
+      "admissionDate": "2026-09-28",
+      "status": "Inpatient",
+      "assignedDoctor": "Dr. Sarah Jenkins",
+      "department": "Cardiology",
+      "ward": "Cardiology Wing - Room 302",
+      "diagnosis": "Hypertensive Heart Disease",
+      "allergies": ["Penicillin", "Sulfa drugs"],
+      "emergencyContact": "Thomas Vance (Spouse) - +1 555-888-2921"
+    },
+    {
+      "id": "PAT-1002",
+      "name": "Marcus Aurelius Chen",
+      "age": 52,
+      "gender": "Male",
+      "bloodGroup": "A+",
+      "contact": "+1 (555) 891-2345",
+      "email": "m.chen@techcorp.io",
+      "address": "128 Beacon St, Cambridge, MA",
+      "admissionDate": "2026-10-01",
+      "status": "Inpatient",
+      "assignedDoctor": "Dr. David Brooks",
+      "department": "Orthopedics",
+      "ward": "Surgical Recovery - Bed 14",
+      "diagnosis": "Post-op Anterior Cruciate Ligament (ACL) Reconstruction",
+      "allergies": ["Latex"],
+      "emergencyContact": "Clara Chen (Wife) - +1 555-492-1082"
+    },
+    {
+      "id": "PAT-1003",
+      "name": "Sophia Rodriguez",
+      "age": 29,
+      "gender": "Female",
+      "bloodGroup": "B+",
+      "contact": "+1 (555) 432-8765",
+      "email": "sophia.rodriguez@domain.com",
+      "address": "19 Newbury St, Boston, MA",
+      "admissionDate": "2026-10-02",
+      "status": "Outpatient",
+      "assignedDoctor": "Dr. Emily Taylor",
+      "department": "Neurology",
+      "ward": "N/A (Outpatient)",
+      "diagnosis": "Chronic Migraine with Aura",
+      "allergies": ["None known"],
+      "emergencyContact": "Carlos Rodriguez (Father) - +1 555-120-9944"
+    },
+    {
+      "id": "PAT-1004",
+      "name": "James Henderson",
+      "age": 67,
+      "gender": "Male",
+      "bloodGroup": "AB-",
+      "contact": "+1 (555) 789-0123",
+      "email": "j.henderson@heritage.net",
+      "address": "88 Commonwealth Ave, Boston, MA",
+      "admissionDate": "2026-09-25",
+      "status": "Inpatient",
+      "assignedDoctor": "Dr. Sarah Jenkins",
+      "department": "Cardiology",
+      "ward": "Intensive Care Unit (ICU) - Bed 04",
+      "diagnosis": "Acute Coronary Syndrome",
+      "allergies": ["Aspirin"],
+      "emergencyContact": "Margaret Henderson (Daughter) - +1 555-901-3321"
+    },
+    {
+      "id": "PAT-1005",
+      "name": "Amina Al-Mansoor",
+      "age": 24,
+      "gender": "Female",
+      "bloodGroup": "O-",
+      "contact": "+1 (555) 654-9812",
+      "email": "amina.mansoor@mit.edu",
+      "address": "500 Memorial Drive, Cambridge, MA",
+      "admissionDate": "2026-09-30",
+      "status": "Discharged",
+      "assignedDoctor": "Dr. Robert Sterling",
+      "department": "Pediatrics & Family Medicine",
+      "ward": "Discharged on 2026-10-02",
+      "diagnosis": "Acute Gastroenteritis (Resolved)",
+      "allergies": ["Ibuprofen"],
+      "emergencyContact": "Tariq Al-Mansoor (Brother) - +1 555-443-1289"
+    },
+    {
+      "id": "PAT-1006",
+      "name": "Lucas Kim",
+      "age": 41,
+      "gender": "Male",
+      "bloodGroup": "A-",
+      "contact": "+1 (555) 321-7654",
+      "email": "lucas.kim@bioventures.com",
+      "address": "33 Brookline Ave, Boston, MA",
+      "admissionDate": "2026-10-02",
+      "status": "Inpatient",
+      "assignedDoctor": "Dr. Emily Taylor",
+      "department": "Neurology",
+      "ward": "Neurology Observation - Room 204",
+      "diagnosis": "L4-L5 Lumbar Radiculopathy",
+      "allergies": ["None known"],
+      "emergencyContact": "Grace Kim (Spouse) - +1 555-877-3312"
+    }
+  ],
+  "doctors": [
+    {
+      "id": "DOC-101",
+      "name": "Dr. Sarah Jenkins",
+      "specialty": "Cardiology",
+      "qualification": "MD, FACC (Harvard Medical School)",
+      "department": "Cardiology",
+      "experience": "16 years",
+      "availability": "Mon, Wed, Fri (08:30 - 16:30)",
+      "status": "On Duty",
+      "phone": "+1 (555) 301-4411",
+      "email": "s.jenkins@apexcare.org",
+      "rating": 4.9,
+      "assignedPatientsCount": 14,
+      "room": "Clinic 304, Pavilion B"
+    },
+    {
+      "id": "DOC-102",
+      "name": "Dr. David Brooks",
+      "specialty": "Orthopedic Surgery",
+      "qualification": "MD, FACS, Orthopedic Board Certified",
+      "department": "Orthopedics",
+      "experience": "12 years",
+      "availability": "Tue, Thu, Sat (09:00 - 17:00)",
+      "status": "In Surgery",
+      "phone": "+1 (555) 301-4422",
+      "email": "d.brooks@apexcare.org",
+      "rating": 4.8,
+      "assignedPatientsCount": 9,
+      "room": "Surgical Wing, OT-3"
+    },
+    {
+      "id": "DOC-103",
+      "name": "Dr. Emily Taylor",
+      "specialty": "Neurology & Neurophysiology",
+      "qualification": "MD, PhD (Johns Hopkins University)",
+      "department": "Neurology",
+      "experience": "11 years",
+      "availability": "Mon, Tue, Thu (09:00 - 15:30)",
+      "status": "On Duty",
+      "phone": "+1 (555) 301-4433",
+      "email": "e.taylor@apexcare.org",
+      "rating": 4.95,
+      "assignedPatientsCount": 11,
+      "room": "Clinic 210, Neuro Suite"
+    },
+    {
+      "id": "DOC-104",
+      "name": "Dr. Robert Sterling",
+      "specialty": "Internal & Emergency Medicine",
+      "qualification": "MD, FACEP (Columbia University)",
+      "department": "Emergency Medicine",
+      "experience": "18 years",
+      "availability": "24/7 Rotational ER Shifts",
+      "status": "On Duty",
+      "phone": "+1 (555) 301-4444",
+      "email": "r.sterling@apexcare.org",
+      "rating": 4.85,
+      "assignedPatientsCount": 18,
+      "room": "Triage & Trauma Center"
+    },
+    {
+      "id": "DOC-105",
+      "name": "Dr. Maya Patel",
+      "specialty": "Pediatrics & Child Health",
+      "qualification": "MD, FAAP (Stanford Medicine)",
+      "department": "Pediatrics",
+      "experience": "9 years",
+      "availability": "Mon, Wed, Thu, Fri (08:00 - 14:00)",
+      "status": "Off Duty",
+      "phone": "+1 (555) 301-4455",
+      "email": "m.patel@apexcare.org",
+      "rating": 4.92,
+      "assignedPatientsCount": 8,
+      "room": "Pediatric Pavilion, Room 108"
+    }
+  ],
+  "appointments": [
+    {
+      "id": "APT-2026-001",
+      "patientId": "PAT-1001",
+      "patientName": "Eleanor Vance",
+      "doctorId": "DOC-101",
+      "doctorName": "Dr. Sarah Jenkins",
+      "department": "Cardiology",
+      "date": "2026-10-03",
+      "time": "09:30 AM",
+      "type": "Follow-up Examination",
+      "status": "Confirmed",
+      "room": "Clinic 304",
+      "notes": "Evaluate response to updated ACE inhibitor dosage"
+    },
+    {
+      "id": "APT-2026-002",
+      "patientId": "PAT-1003",
+      "patientName": "Sophia Rodriguez",
+      "doctorId": "DOC-103",
+      "doctorName": "Dr. Emily Taylor",
+      "department": "Neurology",
+      "date": "2026-10-03",
+      "time": "11:00 AM",
+      "type": "Diagnostic Consultation",
+      "status": "Confirmed",
+      "room": "Clinic 210",
+      "notes": "Review MRI brain scans for chronic vascular migraine"
+    },
+    {
+      "id": "APT-2026-003",
+      "patientId": "PAT-1002",
+      "patientName": "Marcus Aurelius Chen",
+      "doctorId": "DOC-102",
+      "doctorName": "Dr. David Brooks",
+      "department": "Orthopedics",
+      "date": "2026-10-03",
+      "time": "02:00 PM",
+      "type": "Post-Op Wound Check",
+      "status": "Pending",
+      "room": "Surgical Recovery",
+      "notes": "Evaluate dressing, knee flexion, and physical therapy progression"
+    },
+    {
+      "id": "APT-2026-004",
+      "patientId": "PAT-1006",
+      "patientName": "Lucas Kim",
+      "doctorId": "DOC-103",
+      "doctorName": "Dr. Emily Taylor",
+      "department": "Neurology",
+      "date": "2026-10-04",
+      "time": "10:15 AM",
+      "type": "Spinal Assessment",
+      "status": "Confirmed",
+      "room": "Clinic 210",
+      "notes": "Electromyography (EMG) nerve conduction testing"
+    },
+    {
+      "id": "APT-2026-005",
+      "patientId": "PAT-1005",
+      "patientName": "Amina Al-Mansoor",
+      "doctorId": "DOC-104",
+      "doctorName": "Dr. Robert Sterling",
+      "department": "Internal Medicine",
+      "date": "2026-10-01",
+      "time": "04:30 PM",
+      "type": "Discharge Clearance",
+      "status": "Completed",
+      "room": "ER Bay 2",
+      "notes": "Discharge approved with oral rehydration guidelines"
+    }
+  ],
+  "records": [
+    {
+      "id": "REC-5001",
+      "patientId": "PAT-1001",
+      "patientName": "Eleanor Vance",
+      "doctorId": "DOC-101",
+      "doctorName": "Dr. Sarah Jenkins",
+      "date": "2026-09-29",
+      "diagnosis": "Essential Stage II Hypertension with mild LVH",
+      "symptoms": "Exertional dyspnea, episodic palpitations, morning occipital headaches",
+      "vitals": {
+        "bp": "142/90 mmHg",
+        "heartRate": "78 bpm",
+        "temp": "98.4 °F",
+        "spO2": "98%",
+        "respiratoryRate": "16 bpm"
+      },
+      "prescriptions": [
+        { "name": "Amlodipine Besylate", "dosage": "5 mg", "frequency": "Once daily with breakfast", "duration": "30 days" },
+        { "name": "Lisinopril", "dosage": "10 mg", "frequency": "Once daily at night", "duration": "30 days" }
+      ],
+      "labReports": [
+        { "test": "12-Lead Electrocardiogram (ECG)", "status": "Completed", "result": "Normal sinus rhythm with voltage criteria for LVH" },
+        { "test": "Comprehensive Metabolic Panel (CMP)", "status": "Normal", "result": "eGFR: 88, Serum Creatinine: 0.9 mg/dL, Potassium: 4.2 mEq/L" }
+      ],
+      "doctorNotes": "Patient tolerating medications well. Advised DASH diet, sodium restriction < 2g/day, and daily home BP log."
+    },
+    {
+      "id": "REC-5002",
+      "patientId": "PAT-1002",
+      "patientName": "Marcus Aurelius Chen",
+      "doctorId": "DOC-102",
+      "doctorName": "Dr. David Brooks",
+      "date": "2026-10-01",
+      "diagnosis": "Right Knee Anterior Cruciate Ligament (ACL) Tear & Lateral Meniscus Tear",
+      "symptoms": "Knee joint instability, acute swelling following sports pivot injury",
+      "vitals": {
+        "bp": "124/80 mmHg",
+        "heartRate": "70 bpm",
+        "temp": "98.6 °F",
+        "spO2": "99%",
+        "respiratoryRate": "14 bpm"
+      },
+      "prescriptions": [
+        { "name": "Enoxaparin Sodium", "dosage": "40 mg", "frequency": "Subcutaneous injection daily", "duration": "14 days" },
+        { "name": "Acetaminophen / Tramadol", "dosage": "37.5/325 mg", "frequency": "Every 6 hours as needed for pain", "duration": "7 days" }
+      ],
+      "labReports": [
+        { "test": "Right Knee High-Resolution MRI", "status": "Completed", "result": "Full-thickness mid-substance ACL disruption" },
+        { "test": "Pre-op Coagulation Panel (PT/INR)", "status": "Normal", "result": "INR: 1.02, Platelets: 260,000/uL" }
+      ],
+      "doctorNotes": "Arthroscopic ACL reconstruction with hamstring autograft successful. Cryotherapy cuff applied. Ambulation with crutches initiated."
+    },
+    {
+      "id": "REC-5003",
+      "patientId": "PAT-1004",
+      "patientName": "James Henderson",
+      "doctorId": "DOC-101",
+      "doctorName": "Dr. Sarah Jenkins",
+      "date": "2026-09-26",
+      "diagnosis": "Non-ST Elevation Myocardial Infarction (NSTEMI)",
+      "symptoms": "Substernal pressure radiating to left mandible, diaphoresis",
+      "vitals": {
+        "bp": "118/74 mmHg",
+        "heartRate": "64 bpm",
+        "temp": "98.1 °F",
+        "spO2": "97%",
+        "respiratoryRate": "18 bpm"
+      },
+      "prescriptions": [
+        { "name": "Clopidogrel", "dosage": "75 mg", "frequency": "Daily", "duration": "365 days" },
+        { "name": "Atorvastatin", "dosage": "80 mg", "frequency": "Daily at bedtime", "duration": "Ongoing" },
+        { "name": "Metoprolol Succinate", "dosage": "25 mg", "frequency": "Daily", "duration": "Ongoing" }
+      ],
+      "labReports": [
+        { "test": "High-Sensitivity Troponin T Series", "status": "Elevated then Decreasing", "result": "Peak: 420 ng/L, 24h: 94 ng/L" },
+        { "test": "Coronary Angiogram", "status": "Completed", "result": "Drug-eluting stent placed in proximal LAD (90% stenosis resolved to 0%)" }
+      ],
+      "doctorNotes": "Post-PCI clinical course stable. Cardiac telemetry continuous monitoring. Ready for telemetry stepdown ward."
+    }
+  ],
+  "billings": [
+    {
+      "id": "INV-2026-789",
+      "patientId": "PAT-1001",
+      "patientName": "Eleanor Vance",
+      "issueDate": "2026-09-30",
+      "dueDate": "2026-10-15",
+      "status": "Partial",
+      "items": [
+        { "description": "Cardiology Inpatient Ward Care (3 Days)", "amount": 1350 },
+        { "description": "Specialist Consultation - Dr. Jenkins", "amount": 350 },
+        { "description": "Echocardiogram & 12-Lead ECG", "amount": 580 },
+        { "description": "Clinical Pharmacy Dispensing", "amount": 170 }
+      ],
+      "totalAmount": 2450,
+      "paidAmount": 1800,
+      "balance": 650,
+      "insuranceCovered": 1800,
+      "payer": "Blue Cross Blue Shield",
+      "paymentMethod": "Insurance Claim + Credit Card"
+    },
+    {
+      "id": "INV-2026-790",
+      "patientId": "PAT-1002",
+      "patientName": "Marcus Aurelius Chen",
+      "issueDate": "2026-10-01",
+      "dueDate": "2026-10-16",
+      "status": "Paid",
+      "items": [
+        { "description": "Surgical Suite & Arthroscopy Facility", "amount": 3800 },
+        { "description": "Surgical Team Fee - Dr. David Brooks", "amount": 2200 },
+        { "description": "Anesthesiology Services", "amount": 950 },
+        { "description": "Post-Op Knee Orthosis & Cryo Device", "amount": 420 }
+      ],
+      "totalAmount": 7370,
+      "paidAmount": 7370,
+      "balance": 0,
+      "insuranceCovered": 6500,
+      "payer": "Aetna Global Health",
+      "paymentMethod": "Direct Insurance Settlement"
+    },
+    {
+      "id": "INV-2026-791",
+      "patientId": "PAT-1003",
+      "patientName": "Sophia Rodriguez",
+      "issueDate": "2026-10-02",
+      "dueDate": "2026-10-17",
+      "status": "Pending",
+      "items": [
+        { "description": "Neurology Outpatient Consultation", "amount": 280 },
+        { "description": "Cranial MRI Scan with Contrast", "amount": 890 }
+      ],
+      "totalAmount": 1170,
+      "paidAmount": 0,
+      "balance": 1170,
+      "insuranceCovered": 0,
+      "payer": "UnitedHealthcare (Pending Approval)",
+      "paymentMethod": "Pending Verification"
+    },
+    {
+      "id": "INV-2026-792",
+      "patientId": "PAT-1004",
+      "patientName": "James Henderson",
+      "issueDate": "2026-09-28",
+      "dueDate": "2026-10-12",
+      "status": "Paid",
+      "items": [
+        { "description": "ICU Bed Accommodations (3 Days)", "amount": 4500 },
+        { "description": "Cardiac Catheterization & Stenting", "amount": 8200 },
+        { "description": "Interventional Cardiology Fee", "amount": 3100 },
+        { "description": "Intravenous Pharmacology & Lab Series", "amount": 1650 }
+      ],
+      "totalAmount": 17450,
+      "paidAmount": 17450,
+      "balance": 0,
+      "insuranceCovered": 15700,
+      "payer": "Medicare Part A & B",
+      "paymentMethod": "Medicare + Medigap"
+    }
+  ],
+  "wards": [
+    {
+      "id": "WRD-01",
+      "name": "Intensive Care Unit (ICU)",
+      "department": "Critical Care",
+      "floor": "Floor 4, West Wing",
+      "totalBeds": 24,
+      "occupiedBeds": 20,
+      "nurseInCharge": "Nurse Rachel Adams, RN, BSN",
+      "status": "High Occupancy",
+      "type": "Critical"
+    },
+    {
+      "id": "WRD-02",
+      "name": "Cardiology Step-down Wing",
+      "department": "Cardiology",
+      "floor": "Floor 3, East Wing",
+      "totalBeds": 32,
+      "occupiedBeds": 22,
+      "nurseInCharge": "Nurse Kevin Walsh, RN",
+      "status": "Available",
+      "type": "Specialized"
+    },
+    {
+      "id": "WRD-03",
+      "name": "Surgical Recovery Unit",
+      "department": "Surgery & Orthopedics",
+      "floor": "Floor 2, Central Wing",
+      "totalBeds": 30,
+      "occupiedBeds": 18,
+      "nurseInCharge": "Nurse Cynthia Lee, RN",
+      "status": "Available",
+      "type": "Post-Op"
+    },
+    {
+      "id": "WRD-04",
+      "name": "Emergency Trauma Bay",
+      "department": "Emergency Medicine",
+      "floor": "Ground Floor, Entrance B",
+      "totalBeds": 20,
+      "occupiedBeds": 15,
+      "nurseInCharge": "Nurse Marcus Miller, RN, CEN",
+      "status": "Busy",
+      "type": "Emergency"
+    },
+    {
+      "id": "WRD-05",
+      "name": "Pediatric & Neonatal Wing",
+      "department": "Pediatrics",
+      "floor": "Floor 1, North Wing",
+      "totalBeds": 25,
+      "occupiedBeds": 12,
+      "nurseInCharge": "Nurse Priya Nair, RN, CPN",
+      "status": "Available",
+      "type": "Pediatric"
+    },
+    {
+      "id": "WRD-06",
+      "name": "Maternity & Obstetric Suites",
+      "department": "Obstetrics",
+      "floor": "Floor 2, South Wing",
+      "totalBeds": 20,
+      "occupiedBeds": 14,
+      "nurseInCharge": "Nurse Hannah Schmidt, CNM",
+      "status": "Available",
+      "type": "Maternity"
+    }
+  ],
+  "recentActivities": [
+    {
+      "id": "ACT-101",
+      "time": "10 minutes ago",
+      "type": "admission",
+      "title": "Emergency Admission",
+      "description": "Patient Lucas Kim admitted to Neurology Observation Room 204",
+      "priority": "normal"
+    },
+    {
+      "id": "ACT-102",
+      "time": "28 minutes ago",
+      "type": "lab",
+      "title": "Diagnostic Report Ready",
+      "description": "ECG & High-Sensitivity Troponin panel processed for Eleanor Vance",
+      "priority": "high"
+    },
+    {
+      "id": "ACT-103",
+      "time": "1 hour ago",
+      "type": "billing",
+      "title": "Payment Received",
+      "description": "Invoice INV-2026-790 for Marcus Aurelius Chen settled ($7,370)",
+      "priority": "normal"
+    },
+    {
+      "id": "ACT-104",
+      "time": "2 hours ago",
+      "type": "surgery",
+      "title": "Surgery Concluded",
+      "description": "Dr. David Brooks completed ACL Arthroscopy in OR-3",
+      "priority": "normal"
+    },
+    {
+      "id": "ACT-105",
+      "time": "3 hours ago",
+      "type": "discharge",
+      "title": "Patient Discharged",
+      "description": "Amina Al-Mansoor discharged with recovery instructions",
+      "priority": "normal"
+    }
+  ]
+}
